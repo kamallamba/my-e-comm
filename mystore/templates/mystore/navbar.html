@@ -1,0 +1,82 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <img src="{% static 'mystore/images/Cow.jpeg' rounded-circle %}" class="rounded-circle" width="50" height="50"  alt="logo">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          {% comment %} <li class="nav-item">
+            <a class="nav-link active" href="#">Link</a>
+          </li> {% endcomment %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Products
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'category' 'ML' %}">Milk</a></li>
+              <li><a class="dropdown-item" href="{% url 'category' 'cr' %}">Crud</a></li>
+              <li><a class="dropdown-item" href="{% url 'category' 'MS' %}">Milkshake</a></li>
+              <li><a class="dropdown-item" href="{% url 'category' 'LS' %}">Lassi</a></li>
+              <li><a class="dropdown-item" href="{% url 'category' 'GH' %}">Ghee</a></li>
+              <li><a class="dropdown-item" href="{% url 'category' 'PN' %}">Panner</a></li>
+              <li><a class="dropdown-item" href="{% url 'category' 'CZ' %}">Cheese</a></li>
+              <li><a class="dropdown-item" href="{% url 'category' 'IC' %}">Ice-creams</a></li>                            
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'aboutus' %}">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'contactus' %}">Contact Us</a>
+          </li>
+        </ul>
+        <form class="d-flex me-4" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-light bg-primary" type="submit">Search</button>
+        </form>
+        
+        </ul>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0  ms-auto 8px">
+          {% if request.user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{request.user}}
+            </a>
+            <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'details' %}">profile</a></li>
+            <li><a class="dropdown-item" href="#">Orders</a></li>
+            <li><a class="dropdown-item" href="changepassword">Change Password</a></li>
+            {% if request.user.is_authenticated %}
+            <li><a class="dropdown-item" href="{% url 'Logout' %}">Logout</a></li> 
+            {% endif %}                          
+          </ul>
+        </li>
+        
+        <li class ="nav-item  mx-2">
+          <a href="{% url 'Showcart' %}" class ="nav-link text-white">My Cart-  <span class ='text-warning'>{{totalitems}}</span> </a>
+        </li>
+        <li class ="nav-item  mx-2">
+          <a href="#" class ="nav-link text-white">Whislist</a>
+        </li>
+        {% endif %}
+          {% if not request.user.is_authenticated %}
+          <li class ="nav-item  mx-2">
+            <a href="{% url 'Login' %}" class ="nav-link text-white">Login</a>
+          </li>
+          {% endif %}
+          
+          {% if not request.user.is_authenticated %}
+          <li class ="nav-item  mx-2">
+            <a href="{% url 'Registration' %}" class ="nav-link text-white">Resgistration</a>
+          </li>
+          {% endif %}
+        </ul>
+
+      </div>
+    </div>
+  </nav>

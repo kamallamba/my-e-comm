@@ -1,0 +1,50 @@
+{% extends "mystore/base.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class = 'container d-flex'>
+
+
+<div class = 'col-sm-3 mt-5 border-end'>
+    <div class="vstack gap-2 col-md-5 mx-auto">
+        <a href="{% url 'details' %}">
+            <button type="button" class="btn btn-outline-primary">Profile</button>
+        </a>
+        <a href="{% url 'address' %}">
+        <button type="button" class="btn btn-primary ">Address</button>
+    </a>
+    </a>
+    </div>
+</div>
+
+
+<div class ='col-sm-9 d-flex m-5 flex-wrap'>
+
+{% for address in Addresses %}
+
+        <div class="d-flex align-items-center justify-content-center m-3">
+            <div class="user-details-square shadow p-4">
+                <h3 class="text-center mb-3">Adress</h3>
+                <div class="text-center mb-2">
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Name:</strong> {{address.name}}</li>
+                    <li class="list-group-item"><strong>Locality:</strong> {{address.locality}}</li>
+                    <li class="list-group-item"><strong>City:</strong> {{address.city}}</li>
+                    <li class="list-group-item"><strong>Contact Number:</strong> {{address.mobile}}</li>
+                    <li class="list-group-item"><strong>Zip code:</strong> {{address.zipcode}}</li>
+                    <li class="list-group-item"><strong>State:</strong>  {{address.state}}</li>
+                    <br>
+                    <a href="{% url 'update' address.id %}">
+                        <button type="button" class="btn btn-outline-success ">Update</button>
+                    </a>
+                    <!-- Add more fields as needed -->
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+    {% endblock content %}

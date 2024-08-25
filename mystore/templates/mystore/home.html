@@ -1,0 +1,101 @@
+{% extends "mystore/base.html" %}
+{% load static %}
+
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block banner-slider %}
+<div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src='{% static "mystore/images/banner/b1.jpg" %}' class="d-block w-100" alt="">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'mystore/images/banner/b2.jpg' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'mystore/images/banner/b3.jpg' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'mystore/images/banner/b4.jpg' %}" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+{% endblock banner-slider %}
+{% block content %}
+        <div class="container m-5">
+            <div class="row d-flex justify-content-around flex-wrap">
+
+                <div class="col-4 p-3 text-center" >
+                    <a href="{% url 'category' 'GH' %}">
+                      <img src="{% static 'mystore/images/buffalo-ghee.png' %}" alt="" width=250px height=200px>
+                    </a>
+                    <h3>Ghee</h3>
+                </div>
+
+                <div class="col-4 p-3 text-center">
+                  <a href="{% url 'category' 'ML' %}">
+                    <img src="{% static 'mystore/images/cow-milk.png' %}" alt="" width=250px height=200px>
+                  </a>
+                    <h3>Milk</h3>
+                </div>
+
+                <div class="col-4 p-3 text-center">
+                  <a href="{% url 'category' 'cr' %}">
+                    <img src="{% static 'mystore/images/curd-total.png' %}" alt="" width=250px height=200px>
+                  </a>
+                    <h3>Crud</h3>
+                </div>
+
+                <div class="col-4 p-3 text-center" >
+                  <a href="{% url 'category' 'IC' %}">
+                    <img src="{% static 'mystore/images/icbars.png' %}" alt=""width=250px height=200px>
+                  </a>
+                    <h3>Ice-Cream</h3>
+                </div>
+
+                <div class="col-4 p-3 text-center">
+                  <a href="{% url 'category' 'MS' %}">
+                    <img src="{% static 'mystore/images/milk-shake-chocolate.png' %}" alt="" width=250px height=200px>
+                  </a>
+                    <h3>Milk-shake</h3>
+                </div>
+
+
+                <div class="col-4 p-3 text-center">
+                  <a href="{% url 'category' 'PN' %}">
+                    <img src="{% static 'mystore/images/paneer-fresh.png' %}" alt="" width=250px height=200px>
+                  </a>
+                    <h3>Panner</h3>
+                </div>
+
+
+                <div class="col-4 p-3 text-center">
+                  <a href="{% url 'category' 'CZ' %}">
+                    <img src="{% static 'mystore/images/mozzarellacheese.png' %}" alt="" width=250px height=200px>
+                  </a>
+                    <h3>Cheese</h3>
+                </div>
+
+
+                <div class="col-4 p-3 text-center">
+                  <a href="{% url 'category' 'LS' %}">
+                    <img src="{% static 'mystore/images/sweet-lassi.png' %}" alt="" width=250px height=200px>
+                  </a>
+                    <h3>Lasi</h3>
+                </div>
+                
+            </div>   
+        </div>
+        
+        
+    {% endblock content %} 

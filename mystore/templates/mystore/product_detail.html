@@ -1,0 +1,39 @@
+{% extends "mystore/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class= 'p-5 justify-content-evenly flex row mt-5 '>
+    <div class ='col-5 text-center mt-5'>
+        <img src="{{prod.product_image.url}}" class="rounded mx-auto d-block" alt="..." width='300px' height='200px'> 
+    </div>
+
+    <div class='details col-5 mt-5'>
+        <p class = 'fs-1 text fw-bolder'>{{prod.title}}</p>
+        <p class =>Rs.{{prod.discounted_price}}</p>
+        <p class ='text-decoration-line-through'>Rs.{{prod.selling_price}}</p>
+        <h3>Product Details</h3>
+        <ul><li>
+            <p>{{prod.composition}}</p>
+        </li>
+        <li>
+            <p>{{prod.prodapp}}</p>
+        </li>
+        <li>
+            <p>{{prod.discription}}</p>
+        </li>
+    </ul>
+
+    <a href="{% url 'Cart' prod.id %}">
+        <button type="button" class ='btn btn-danger col-8 m-1'>
+            Add to cart</button></a>
+        
+        <button type="button" class ='btn btn-primary col-8'>Buy Now </button>
+    </div>
+</div> 
+
+{% endblock content %}
+
+{% block fotter  %}
+<div class="footer bottom-0">copyright:2024 ||Devlop by : kamal lamba </div>
+{% endblock fotter  %}

@@ -1,0 +1,42 @@
+{% extends "mystore/base.html" %}
+{% load static %}
+
+
+{% block title %}
+    Category
+{% endblock title %}
+
+
+{% block content %}
+ <div class="contanier ">
+    <div class="row">
+        <div class ='col-3 '>
+            <ul class="list-group">
+                {% for product in products %}
+                <a href="{% url 'product_details' product.id %}" class = 'text-decoration-none'>
+            <li class="list-group-item"><p>{{product.title}}</p>      
+                </li>
+            </a>
+                    {% endfor %}
+              </ul>
+        </div>
+        <div class='col-9 row flex justify-content-around'>
+            {% for product in products %}
+            <div class='col-4'>
+                <a href="{% url 'product_details' product.id %}">
+                        <img src="{{product.product_image.url}}"
+                        height='200px' width='300px'/> 
+                </a>
+                <p>{{product.title}}</p>
+                <p>Rs.{{product.selling_price}}</p>   
+            </div> 
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+{% block fotter  %}
+<div class="footer position-absolute bottom-0">copyright:2024 ||Devlop by : kamal lamba </div>
+{% endblock fotter  %}

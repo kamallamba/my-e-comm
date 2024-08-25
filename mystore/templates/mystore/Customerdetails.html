@@ -1,0 +1,76 @@
+{% extends "mystore/base.html" %}
+{% load static %}
+
+{% block title %}Customer Profile{% endblock title %}
+
+{% block content %}
+<div class = 'container d-flex'>
+    
+    <div class = 'col-sm-3 mt-5 border-end'>
+
+        <div class="vstack gap-2 col-md-5 mx-auto">
+
+            <a href="{% url 'details' %}"><button type="button" class="btn btn-primary w-7">Profile</button></a>
+
+            <a href="{% url 'address' %}"><button type="button" class="btn btn-outline-primary">Address</button></a>
+            
+        </div>
+    </div>
+
+    <div class ='col-sm-9 d-flex m-5 '>
+        <div class="d-flex align-items-center justify-content-center  bg-light ">
+            <div class="card p-4 shadow" style="width: 400px;">
+                
+                <h2 class="text-center mb-4">{{request.user}}</h2>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <form method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="mb-3">
+                            {{field.label_tag}}
+                            {{field}}
+                            {% if field.errors %}
+                            <div class="text-danger">{{ field.errors }}</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    
+                    <div class='d-flex gap-5 m-2'>
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                        <a href="{% url 'home' %}">
+                            <button type="button" class="btn btn-outline-secondary ">Back</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

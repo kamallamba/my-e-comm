@@ -1,0 +1,61 @@
+{% extends "mystore/base.html" %}
+{% load static %}
+
+{% block title %}
+
+{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class='d-flex col-12 m-3 '>
+        <div class='col-7 border m-3 p-2'>
+            <h2>Order Summary</h2>
+            <hr>
+            {% for p in products %}
+            <div class='border m-2 p-2'>
+                <b>Product:{{p.product.title}}</b>
+                <p>Quantity:{{p.quantity}}</p>
+                 
+            </div>
+            {% endfor %}
+           
+            <b>Total Cost = {{amount}} + Rs40 =  {{totalamount}} </b>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, ab rem qui aliquid ex illum enim asperiores, repellat, voluptatum fugiat porro ducimus quam eaque accusamus aperiam vitae praesentium ipsam optio.</p>
+        </div>
+
+
+        <div class='col-5 border m-3'>
+            <div class='text-center'><h2>Select Shipping Address</h2></div>    
+            <hr>
+            <form action="" method="POST">
+            {% csrf_token %}
+            {% for address in addresses %}
+            <div class='border p-2 m-3'>
+                <input class="form-check-input" type="radio" name="address" id="{{forloop.counter}}" value="{{forloop.counter}}">
+                <label class="form-check-label"><b>Address</b></label>
+                <p>City: {{address.city}}</p>
+                <p>Phone- {{address.mobile}}</p>
+                <p>Address:{{address.city}} {{address.state}}</p>
+               
+            </div>
+            {% endfor %}
+            <p class='px-2'>Total Items</p>
+            <div class ='border m-2 p-3'>
+              <b>{{itemsincart}}</b>
+            </div>
+
+            <p class='px-2'>Total Amount</p>
+            <div class ='border m-2 p-3'>
+              <b> Rs.{{totalamount}}</b>
+            </div>
+            <div class ='text-end'> <button class ='btn btn-warning m-2'>Continue</button></div>
+            
+        </form>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock content %}
